@@ -6,9 +6,12 @@ document.getElementById("test-button").addEventListener("click", function () {
 });
 */
 const titleClickHandler = function (event) {
+  event.preventDefault();
+  const clickedElement = this;
+  console.log("clickedElement (with plus): " + clickedElement);
   console.log("Link was clicked!");
   console.log(event);
-  /* remove class 'active' from all article links  */
+  /* [DONE] remove class 'active' from all article links  */
 
   const activeLinks = document.querySelectorAll(".titles a.active");
 
@@ -16,9 +19,11 @@ const titleClickHandler = function (event) {
     activeLink.classList.remove("active");
   }
 
-  /* add class 'active' to the clicked link */
+  /* [IN PROGRESS] add class 'active' to the clicked link */
+  clickedElement.classList.add("active");
+  console.log("clickedElement:", clickedElement);
 
-  /* remove class 'active' from all articles */
+  /* [DONE]  remove class 'active' from all articles */
 
   const activeArticles = document.querySelectorAll(".titles a.active");
 
@@ -27,6 +32,11 @@ const titleClickHandler = function (event) {
   }
 
   /* get 'href' attribute from the clicked link */
+  /*
+  var div = document.getElementById("clicedElement");
+  var a = div.getAttribute("href");
+  alert(a);  */
+  // pokaże wartość atrybutu "href" dla elementu o id="href
 
   /* find the correct article using the selector (value of 'href' attribute) */
 
