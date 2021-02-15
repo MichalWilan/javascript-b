@@ -25,17 +25,16 @@ const titleClickHandler = function (event) {
 
   /* [DONE]  remove class 'active' from all articles */
 
-  const activeArticles = document.querySelectorAll(".titles a.active");
-
+  const activeArticles = document.querySelectorAll(".posts .active");
   for (let activeArticle of activeArticles) {
     activeArticle.classList.remove("active");
   }
 
   /* get 'href' attribute from the clicked link */
-  /*
-  var div = document.getElementById("clicedElement");
-  var a = div.getAttribute("href");
-  alert(a);  */
+
+  var href = clickedElement.getAttribute("href");
+  console.log("href");
+
   // pokaże wartość atrybutu "href" dla elementu o id="href
 
   /* find the correct article using the selector (value of 'href' attribute) */
