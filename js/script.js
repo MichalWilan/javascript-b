@@ -14,12 +14,12 @@ const titleClickHandler = function (event) {
   /* [DONE] remove class 'active' from all article links  */
 
   const activeLinks = document.querySelectorAll(".titles a.active");
-
   for (let activeLink of activeLinks) {
     activeLink.classList.remove("active");
   }
 
-  /* [IN PROGRESS] add class 'active' to the clicked link */
+  /* [DONE] add class 'active' to the clicked link */
+
   clickedElement.classList.add("active");
   console.log("clickedElement:", clickedElement);
 
@@ -32,14 +32,17 @@ const titleClickHandler = function (event) {
 
   /* get 'href' attribute from the clicked link */
 
-  var href = clickedElement.getAttribute("href");
-  console.log("href");
-
-  // pokaże wartość atrybutu "href" dla elementu o id="href
+  const href = clickedElement.getAttribute("href");
+  console.log(href);
 
   /* find the correct article using the selector (value of 'href' attribute) */
 
+  const article = document.querySelector(href);
+
   /* add class 'active' to the correct article */
+
+  article.classList.toggle("active");
+  console.log("clickedElement:", article);
 };
 
 const links = document.querySelectorAll(".titles a");
