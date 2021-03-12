@@ -37,11 +37,11 @@ const titleClickHandler = function (event) {
 
   /* find the correct article using the selector (value of 'href' attribute) */
 
-  const article = document.querySelector(href);
+  const targetArticle = document.querySelector(href);
 
   /* add class 'active' to the correct article */
 
-  article.classList.toggle("active");
+  targetArticle.classList.toggle("active");
   console.log("clickedElement:", article);
 
   const optArticleSelector = ".post",
@@ -55,7 +55,11 @@ const titleClickHandler = function (event) {
       "");
 
     /* for each article */
+
+    const articles = document.querySelectorAll(optArticleSelector);
+
     /* get the article id */
+
     /* find the title element */
     /* get the title from the title element */
     /* create HTML of the link */
