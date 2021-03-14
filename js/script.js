@@ -1,16 +1,13 @@
 "use strict";
-/*
-document.getElementById("test-button").addEventListener("click", function () {
-  const links = document.querySelectorAll(".titles a");
-  console.log("links:", links);
-});
-*/
+
+const optArticleSelector = ".post",
+  optTitleSelector = ".post-title",
+  optTitleListSelector = ".titles";
+
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
-  console.log("clickedElement (with plus): " + clickedElement);
-  console.log("Link was clicked!");
-  console.log(event);
+
   /* [DONE] remove class 'active' from all article links  */
 
   const activeLinks = document.querySelectorAll(".titles a.active");
@@ -42,61 +39,54 @@ const titleClickHandler = function (event) {
   /* add class 'active' to the correct article */
 
   targetArticle.classList.toggle("active");
-  console.log("clickedElement:", article);
-
-  const optArticleSelector = ".post",
-    optTitleSelector = ".post-title",
-    optTitleListSelector = ".titles";
-
-  generateTitleLinks();
-
-  function generateTitleLinks() {
-    /* remove contents of titleList */
-
-    const titleList = (document.querySelector(optTitleListSelector).innerHTML =
-      "");
-
-    /* for each article */
-
-    const articles = document.querySelectorAll(optArticleSelector);
-
-    /* find all the articles and save them to variable: articles */
-
-    let html = "";
-
-    for (let article of articles) {
-      /* get the article id */
-
-      const articleId = document.querySelector("id");
-
-      /* find the title element */
-      /* get the title from the title element */
-
-      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-
-      /* create HTML of the link */
-
-      const linkHTML =
-        '<li><a href="#' +
-        articleId +
-        '"><span>' +
-        articleTitle +
-        "</span></a></li>";
-      console.log(linkHTML);
-
-      /* insert link into titleList */
-
-      html = html + linkHTML;
-    }
-
-    titleList.innerHTML = html;
-    console.log(html);
-  }
 };
 
-const links = document.querySelectorAll(".titles a");
+function generateTitleLinks() {
+  /* remove contents of titleList */
 
-for (let link of links) {
-  link.addEventListener("click", titleClickHandler);
+  const titleList = document.querySelector(optTitleListSelector);
+  titleList.innerHTML = "";
+
+  /* for each article */
+
+  const articles = document.querySelectorAll(optArticleSelector);
+
+  /* find all the articles and save them to variable: articles */
+
+  let html = "";
+
+  for (let article of articles) {
+    /* get the article id */
+
+    const articleId = article.id;
+
+    /* find the title element */
+    /* get the title from the title element */
+
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
+    /* create HTML of the link */
+
+    const linkHTML =
+      '<li><a href="#' +
+      articleId +
+      '"><span>' +
+      articleTitle +
+      "</span></a></li>";
+    console.log(linkHTML);
+
+    /* insert link into titleList */
+
+    html = html + linkHTML;
+  }
+
+  titleList.innerHTML = html;
+  console.log(html);
+
+  const links = document.querySelectorAll(".titles a");
+  for (let link of links) {
+    link.addEventListener("click", titleClickHandler);
+  }
 }
-console.log(links);
+
+generateTitleLinks();
