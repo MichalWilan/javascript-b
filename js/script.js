@@ -94,7 +94,7 @@ generateTitleLinks();
 
 function generateTags() {
   /* find all articles */
-  //optArticleSelector - znajduje post który jest klasą w html dla artykulu. Tu stoimy.
+
   const articles = document.querySelectorAll(optArticleSelector);
 
   /* START LOOP: for every article: */
@@ -102,7 +102,8 @@ function generateTags() {
   for (let article of articles) {
     /* find tags wrapper */
 
-    const titleList = article.querySelector(optTitleListSelector);
+    const titleList = article.querySelector(optArticleTagsSelector);
+    console.log(titleList);
 
     /* make html variable with empty string */
 
@@ -110,7 +111,7 @@ function generateTags() {
 
     /* get tags from data-tags attribute */
 
-    const articleTags = document.querySelectorAll('data-tags');
+    const articleTags = article.getAttribute('data-tags');
     console.log(articleTags);
 
     /* split tags into array */
