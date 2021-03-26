@@ -234,7 +234,8 @@ function generateAuthors() {
 
     /* generate HTML of the link */
 
-    const linkHTML = '<a href="#author-">' + authorTag + '</a>';
+    const linkHTML =
+      '<a href="#author-' + authorTag + '">' + authorTag + '</a>';
     console.log(linkHTML);
 
     /* add generated code to html variable */
