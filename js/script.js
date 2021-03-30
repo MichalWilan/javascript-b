@@ -6,6 +6,7 @@ const optArticleSelector = '.post',
   optArticleTagsSelector = '.post-tags .list',
   optCloudClassCount = '5',
   optCloudClassPrefix = 'tag-size-',
+  optAuthorsListSelector = '.author.list',
   optTagsListSelector = '.tags.list';
 //optArticleAuthorSelector = '.post-author';
 
@@ -273,6 +274,9 @@ function addClickListenersToTags() {
 addClickListenersToTags();
 
 function generateAuthors() {
+  /* [NEW] create a new variable allAuthors with an empty object */
+  let allAuthors = {};
+
   /* find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
@@ -289,7 +293,7 @@ function generateAuthors() {
 
     let html = '';
 
-    /* get tags from data-tags attribute */
+    /* get author from data-tags attribute */
 
     const authorTag = article.getAttribute('data-author');
     console.log(authorTag);
@@ -305,6 +309,14 @@ function generateAuthors() {
     html = html + linkHTML;
     console.log(html);
 
+    /* [NEW] check if this link is NOT already in allTags */
+    if (!allAuthors[authorTag]) {
+      /* [NEW] add tag to allTags object */
+      allAuthors[authorTag] = 1;
+    } else {
+      allAuthors[authorTag]++;
+    }
+
     /* insert HTML of all the links into the tags wrapper */
 
     titleList.innerHTML = html;
@@ -312,6 +324,32 @@ function generateAuthors() {
 
     /* END LOOP: for every article: */
   }
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.authors');
+
+  const tagsParams = calculateTagsParams(allAuthors);
+  console.log('tagsParams:', tagsParams);
+
+  /* [NEW] create variable for all links HTML code */
+  let allAuthorsHTML = '';
+
+  /* [NEW] START LOOP: for each tag in allTags: */
+  for (let authorTag in allAuthors) {
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    const tagLinkHTML =
+      '<li><a href="#author-' +
+      authorTag +
+      '" class="' +
+      (allAuthors[authorTag], tagsParams) +
+      '">' +
+      authorTag +
+      '</a></li>';
+    allAuthorsHTML += tagLinkHTML;
+
+    /* [NEW] END LOOP: for each tag in allTags: */
+  }
+  /*[NEW] add HTML from allTagsHTML to tagList */
+  tagList.innerHTML = allAuthorsHTML;
 }
 
 generateAuthors();
