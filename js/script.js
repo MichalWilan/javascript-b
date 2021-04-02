@@ -55,9 +55,7 @@ function generateTitleLinks(customSelector = '') {
 
   /* for each article */
 
-  const articles = document.querySelectorAll(
-    optArticleSelector + customSelector
-  );
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
   /* find all the articles and save them to variable: articles */
 
@@ -75,12 +73,7 @@ function generateTitleLinks(customSelector = '') {
 
     /* create HTML of the link */
 
-    const linkHTML =
-      '<li><a href="#' +
-      articleId +
-      '"><span>' +
-      articleTitle +
-      '</span></a></li>';
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     console.log(linkHTML);
 
     /* insert link into titleList */
@@ -156,8 +149,7 @@ function generateTags() {
       console.log(tag);
       /* generate HTML of the link */
 
-      const linkHTML =
-        '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       console.log(linkHTML);
 
       /* add generated code to html variable */
@@ -194,14 +186,7 @@ function generateTags() {
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let tag in allTags) {
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    const tagLinkHTML =
-      '<li><a href="#tag-' +
-      tag +
-      '" class="' +
-      calculateTagClass(allTags[tag], tagsParams) +
-      '">' +
-      tag +
-      '</a></li>';
+    const tagLinkHTML = `<li><a href="#tag-${tag}" class="${calculateTagClass(allTags[tag], tagsParams)}">${tag}</a></li>`;
     allTagsHTML += tagLinkHTML;
     // const linkHTML =    '<a href="#author-' + authorTag + '">' + authorTag + '</a>';
     /* [NEW] END LOOP: for each tag in allTags: */
@@ -300,8 +285,7 @@ function generateAuthors() {
 
     /* generate HTML of the link */
 
-    const linkHTML =
-      '<a href="#author-' + authorTag + '">' + authorTag + '</a>';
+    const linkHTML = '<a href="#author-' + authorTag + '">' + authorTag + '</a>';
     console.log(linkHTML);
 
     /* add generated code to html variable */
@@ -336,15 +320,7 @@ function generateAuthors() {
   /* [NEW] START LOOP: for each tag in allTags: */
   for (let authorTag in allAuthors) {
     /* [NEW] generate code of a link and add it to allTagsHTML */
-    const tagLinkHTML =
-      '<li><a href="#author-' +
-      authorTag +
-      '">' +
-      authorTag +
-      ' (' +
-      allAuthors[authorTag] +
-      ')' +
-      '</a></li>';
+    const tagLinkHTML = '<li><a href="#author-' + authorTag + '">' + authorTag + ' (' + allAuthors[authorTag] + ')' + '</a></li>';
     allAuthorsHTML += tagLinkHTML;
 
     /* [NEW] END LOOP: for each tag in allTags: */
