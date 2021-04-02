@@ -339,8 +339,8 @@ function generateAuthors() {
     const tagLinkHTML =
       '<li><a href="#author-' +
       authorTag +
-      '" class="' +
-      (allAuthors[authorTag], tagsParams) +
+      '" "' +
+      calculateTagClass(allAuthors[authorTag], tagsParams) +
       '">' +
       authorTag +
       '</a></li>';
